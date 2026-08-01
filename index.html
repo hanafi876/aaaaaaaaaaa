@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Potato Service — Call Service Laptop & Komputer Yogyakarta</title>
+<meta name="description" content="Service laptop & komputer panggilan di Yogyakarta. Teknisi datang ke lokasimu. Fast respon 24 jam. Chat WhatsApp untuk konsultasi & estimasi harga.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy-950:#050f1e;
+    --navy-900:#0a1d38;
+    --navy-800:#11294a;
+    --navy-700:#1b3a63;
+    --sky-100:#eef8ff;
+    --sky-200:#dcefff;
+    --cream:#fdf9f0;
+    --ink:#0f1e35;
+    --ink-soft:#4d5b78;
+    --ink-soft-2:rgba(253,249,240,.72);
+    --orange-500:#ff7a2f;
+    --orange-600:#e6621c;
+    --gold-400:#ffc93c;
+    --batik:#4c2913;
+    --line-dark:rgba(255,255,255,.14);
+    --line-light:rgba(15,30,53,.1);
+    --radius-lg:28px;
+    --radius-md:18px;
+    --shadow-soft:0 20px 50px rgba(5,15,30,.16);
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:88px}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Nunito Sans',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:'Fredoka',system-ui,sans-serif;font-weight:600;margin:0;line-height:1.08}
+  p{margin:0}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  section{position:relative}
+
+  ::selection{background:var(--orange-500);color:#fff}
+
+  a:focus-visible,button:focus-visible{outline:3px solid var(--gold-400);outline-offset:3px;border-radius:6px}
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Fredoka',sans-serif;font-weight:600;font-size:13px;
+    letter-spacing:.04em;text-transform:uppercase;
+    color:var(--orange-500);
+  }
+  .eyebrow::before{content:"";width:18px;height:3px;border-radius:2px;background:var(--orange-500);display:inline-block}
+
+  /* ===== Batik strip ===== */
+  .batik-strip{
+    height:10px;
+    background:repeating-linear-gradient(135deg,var(--batik) 0 6px,var(--gold-400) 6px 9px,var(--navy-900) 9px 15px);
+  }
+
+  /* ===== Buttons ===== */
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Fredoka',sans-serif;font-weight:600;font-size:16px;
+    padding:15px 26px;border-radius:999px;text-decoration:none;
+    border:2px solid transparent;cursor:pointer;
+    transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .25s;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-3px)}
+  .btn-orange{
+    background:var(--orange-500);color:#fff;
+    box-shadow:0 14px 30px -8px rgba(255,122,47,.6);
+  }
+  .btn-orange:hover{background:var(--orange-600)}
+  .btn-ghost-light{
+    background:transparent;border-color:var(--line-dark);color:var(--cream);
+  }
+  .btn-ghost-light:hover{background:rgba(255,255,255,.08)}
+  .btn-navy{
+    background:var(--navy-900);color:#fff;
+    box-shadow:0 14px 30px -10px rgba(10,29,56,.5);
+  }
+  .btn-navy:hover{background:var(--navy-800)}
+  .btn-sm{padding:11px 20px;font-size:14.5px}
+
+  /* ===== Header ===== */
+  .site-header{
+    position:sticky;top:0;z-index:500;
+    background:rgba(10,29,56,.88);
+    backdrop-filter:blur(14px) saturate(140%);
+    border-bottom:1px solid var(--line-dark);
+  }
+  .site-header .in{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;max-width:1180px;margin:0 auto;gap:16px;
+  }
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+  .brand img{width:42px;height:42px;border-radius:50%;object-fit:cover;flex:0 0 auto}
+  .brand-word{font-family:'Fredoka',sans-serif;font-weight:700;font-size:19px;color:#fff;line-height:1}
+  .brand-word small{display:block;font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:10px;letter-spacing:.14em;color:var(--gold-400);margin-top:3px}
+
+  .nav-links{display:flex;align-items:center;gap:30px;list-style:none;margin:0;padding:0}
+  .nav-links a{
+    text-decoration:none;color:var(--ink-soft-2);font-weight:700;font-size:14.5px;
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:#fff}
+
+  .header-actions{display:flex;align-items:center;gap:10px}
+  .burger{
+    display:none;background:none;border:0;width:40px;height:40px;
+    align-items:center;justify-content:center;cursor:pointer;
+  }
+  .burger span,.burger span::before,.burger span::after{
+    content:"";display:block;width:20px;height:2px;background:#fff;border-radius:2px;
+    position:relative;transition:transform .25s;
+  }
+  .burger span::before{position:absolute;top:-6px}
+  .burger span::after{position:absolute;top:6px}
+
+  .mobile-panel{
+    display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease);
+    background:var(--navy-900);border-bottom:1px solid var(--line-dark);
+  }
+  .mobile-panel.open{grid-template-rows:1fr}
+  .mobile-panel > div{overflow:hidden}
+  .mobile-panel ul{list-style:none;margin:0;padding:6px 24px 20px;display:flex;flex-direction:column;gap:2px}
+  .mobile-panel a{
+    display:block;padding:13px 4px;text-decoration:none;color:#fff;font-weight:700;
+    border-top:1px solid var(--line-dark);font-size:15px;
+  }
+
+  @media (max-width:900px){
+    .nav-links{display:none}
+    .header-actions .btn-orange{display:none}
+    .burger{display:flex}
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    background:
+      radial-gradient(1100px 620px at 14% -10%, rgba(255,122,47,.16), transparent 60%),
+      radial-gradient(900px 700px at 88% 8%, rgba(255,201,60,.10), transparent 55%),
+      linear-gradient(180deg,var(--navy-950),var(--navy-900) 55%,var(--navy-900));
+    color:#fff;
+    overflow:hidden;
+    padding:64px 0 0;
+  }
+  .hero .wrap{
+    display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:32px;
+    min-height:560px;
+  }
+  .hero-copy{position:relative;z-index:2;padding-bottom:56px}
+  .hero-copy .eyebrow{margin-bottom:18px}
+  .hero-copy h1{
+    font-size:clamp(2.3rem,4.6vw,3.4rem);color:#fff;letter-spacing:-.01em;
+  }
+  .hero-copy h1 .hl{color:var(--orange-500)}
+  .hero-copy .lead{
+    margin-top:20px;max-width:46ch;font-size:17.5px;color:var(--ink-soft-2);
+  }
+  .hero-cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .hero-cta .follow{font-size:14px;color:var(--ink-soft-2);font-weight:700}
+  .hero-cta .follow a{color:var(--gold-400);text-decoration:none}
+  .hero-cta .follow a:hover{text-decoration:underline}
+
+  .hero-art{position:relative;height:100%;display:flex;align-items:flex-end;justify-content:center;z-index:1}
+  .hero-art .glow{
+    position:absolute;width:420px;height:420px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,122,47,.38),transparent 70%);
+    filter:blur(6px);bottom:-40px;right:10%;
+  }
+  .hero-art img{
+    position:relative;max-width:420px;width:88%;
+    filter:drop-shadow(0 30px 40px rgba(0,0,0,.45));
+  }
+
+  @media (max-width:860px){
+    .hero .wrap{grid-template-columns:1fr;min-height:0}
+    .hero-copy{padding-bottom:8px;text-align:left}
+    .hero-art{order:-1;padding-top:26px}
+    .hero-art img{max-width:280px}
+    .hero-art .glow{width:280px;height:280px}
+  }
+
+  /* ===== Section labels ===== */
+  .sec-head{max-width:640px;margin-bottom:48px}
+  .sec-head h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-top:12px}
+  .sec-head p{margin-top:14px;font-size:16.5px;color:var(--ink-soft)}
+  .sec-head.on-dark h2{color:#fff}
+  .sec-head.on-dark p{color:var(--ink-soft-2)}
+
+  /* ===== Layanan ===== */
+  .layanan{background:var(--sky-100);padding:88px 0}
+  .layanan-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:26px;align-items:stretch}
+
+  .panel{
+    border-radius:var(--radius-lg);padding:38px 36px;position:relative;overflow:hidden;
+  }
+  .panel-service{
+    background:var(--navy-900);color:#fff;
+    display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start;
+  }
+  .panel-service .txt{grid-column:1/2}
+  .panel-service h3{color:#fff;font-size:1.5rem;margin-bottom:6px}
+  .panel-kicker{font-size:13px;font-weight:700;color:var(--gold-400);letter-spacing:.04em;text-transform:uppercase}
+  .check-list{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:11px}
+  .check-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--ink-soft-2)}
+  .check-list li svg{flex:0 0 auto;margin-top:2px}
+  .panel-service .mascot{grid-column:2/3;align-self:end;width:150px;margin-top:-10px}
+  .panel-service .price-note{
+    margin-top:26px;padding-top:20px;border-top:1px solid var(--line-dark);
+    grid-column:1/-1;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;
+  }
+  .panel-service .price-note span{font-size:14px;color:var(--ink-soft-2)}
+
+  .panel-konsul{
+    background:var(--cream);border:1px solid var(--line-light);
+    display:flex;flex-direction:column;
+  }
+  .panel-konsul h3{font-size:1.35rem;color:var(--ink);margin-bottom:12px}
+  .panel-konsul p{color:var(--ink-soft);font-size:15px}
+  .panel-konsul .mascot{width:150px;margin:14px auto -4px;order:3}
+  .panel-konsul .note{
+    margin-top:16px;padding:12px 14px;background:var(--sky-200);border-radius:12px;
+    font-size:13.5px;color:var(--ink-soft);font-weight:700;
+  }
+  .panel-konsul .btn{margin-top:20px;align-self:flex-start}
+
+  @media (max-width:860px){
+    .layanan-grid{grid-template-columns:1fr}
+    .panel-service{grid-template-columns:1fr}
+    .panel-service .mascot{grid-column:1/2;justify-self:end;margin-top:8px}
+  }
+
+  /* ===== Alur ===== */
+  .alur{background:var(--navy-950);color:#fff;padding:96px 0}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:8px}
+  .steps::before{
+    content:"";position:absolute;top:34px;left:6%;right:6%;height:2px;
+    background:repeating-linear-gradient(90deg,var(--line-dark) 0 10px,transparent 10px 18px);
+  }
+  .step{position:relative;padding:0 20px 0 0}
+  .step .num{
+    font-family:'Fredoka',sans-serif;font-weight:700;font-size:2.6rem;color:var(--orange-500);
+    background:var(--navy-950);display:inline-block;padding-right:14px;position:relative;z-index:1;
+  }
+  .step h3{margin-top:18px;font-size:1.1rem;color:#fff}
+  .step p{margin-top:10px;font-size:14.5px;color:var(--ink-soft-2)}
+  .step:nth-child(2){margin-top:26px}
+  .step:nth-child(4){margin-top:-14px}
+
+  @media (max-width:860px){
+    .steps{grid-template-columns:1fr;gap:34px}
+    .steps::before{display:none}
+    .step:nth-child(2),.step:nth-child(4){margin-top:0}
+  }
+
+  /* ===== Kenapa ===== */
+  .kenapa{background:var(--cream);padding:96px 0}
+  .claims{display:grid;gap:0;border-top:1px solid var(--line-light)}
+  .claim{
+    display:grid;grid-template-columns:120px 1fr;gap:28px;align-items:center;
+    padding:34px 0;border-bottom:1px solid var(--line-light);
+  }
+  .claim .tag{
+    font-family:'Fredoka',sans-serif;font-weight:700;font-size:15px;color:var(--orange-500);
+  }
+  .claim h3{font-size:1.3rem;color:var(--ink)}
+  .claim p{margin-top:8px;color:var(--ink-soft);font-size:15px;max-width:56ch}
+  .claim:nth-child(even) .tag{color:var(--batik)}
+  .kenapa-foot{
+    margin-top:40px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+  }
+  .kenapa-foot img{width:130px}
+  .kenapa-foot p{color:var(--ink-soft);font-size:15px;max-width:38ch}
+
+  @media (max-width:640px){
+    .claim{grid-template-columns:1fr;gap:8px}
+  }
+
+  /* ===== CTA akhir ===== */
+  .cta-final{
+    background:linear-gradient(135deg,var(--orange-600),var(--orange-500) 60%);
+    color:#fff;padding:80px 0;text-align:center;
+  }
+  .cta-final h2{font-size:clamp(1.8rem,3.6vw,2.6rem);color:#fff}
+  .cta-final p{margin-top:14px;color:rgba(255,255,255,.9);font-size:17px}
+  .cta-final .btn-navy{margin-top:30px}
+  .cta-final .socials{margin-top:22px;display:flex;gap:18px;justify-content:center;font-size:14px;font-weight:700}
+  .cta-final .socials a{text-decoration:none;color:#fff;opacity:.9}
+  .cta-final .socials a:hover{opacity:1;text-decoration:underline}
+
+  /* ===== Footer ===== */
+  footer{background:var(--navy-950);color:var(--ink-soft-2);padding:64px 0 28px}
+  .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--line-dark)}
+  .foot-brand{display:flex;gap:14px;align-items:center;max-width:360px}
+  .foot-brand img{width:52px;height:52px;border-radius:50%}
+  .foot-brand .name{font-family:'Fredoka',sans-serif;font-weight:700;color:#fff;font-size:19px}
+  .foot-brand .tag{font-size:13.5px;margin-top:4px}
+  .foot-links{display:flex;gap:48px;flex-wrap:wrap}
+  .foot-col h4{font-family:'Fredoka',sans-serif;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-400);margin-bottom:14px}
+  .foot-col ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .foot-col a{text-decoration:none;color:var(--ink-soft-2);font-size:14.5px;font-weight:600}
+  .foot-col a:hover{color:#fff}
+  .foot-bottom{padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px}
+
+  @media (max-width:640px){
+    .foot-top{flex-direction:column}
+  }
+
+  /* ===== WA float ===== */
+  .wa-float{
+    position:fixed;bottom:22px;right:22px;z-index:400;
+    width:58px;height:58px;border-radius:50%;background:#25D366;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 14px 30px -8px rgba(0,0,0,.4);
+    transition:transform .3s var(--ease);
+  }
+  .wa-float:hover{transform:scale(1.08)}
+
+  /* ===== reveal ===== */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="in">
+    <a class="brand" href="#top">
+      <img src="assets/logo.jpg" alt="Logo Potato Service" width="42" height="42">
+      <span class="brand-word">Potato Service<small>YOGYAKARTA</small></span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#layanan">Layanan</a></li>
+        <li><a href="#alur">Alur Servis</a></li>
+        <li><a href="#kenapa">Kenapa Kami</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-orange btn-sm" href="https://wa.me/6289900694797?text=Halo%20Potato%20Service%2C%20saya%20mau%20konsultasi%20laptop%2FPC" target="_blank" rel="noopener">Chat WA</a>
+      <button class="burger" id="burgerBtn" aria-label="Buka menu" aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <div>
+      <ul>
+        <li><a href="#layanan">Layanan</a></li>
+        <li><a href="#alur">Alur Servis</a></li>
+        <li><a href="#kenapa">Kenapa Kami</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+        <li><a href="https://wa.me/6289900694797?text=Halo%20Potato%20Service%2C%20saya%20mau%20konsultasi%20laptop%2FPC" target="_blank" rel="noopener">💬 Chat WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy reveal">
+      <span class="eyebrow">Call Service · Yogyakarta</span>
+      <h1>Laptop &amp; PC Rewel?<br><span class="hl">Potato Service</span> Datang ke Lokasimu.</h1>
+      <p class="lead">Nggak perlu ke toko. Teknisi kami langsung meluncur ke tempatmu di area Yogyakarta. Fast respon 24 jam (kecuali lagi bobo), konsultasi santai, nggak pakai bahasa teknis yang bikin pusing.</p>
+      <div class="hero-cta">
+        <a class="btn btn-orange" href="https://wa.me/6289900694797?text=Halo%20Potato%20Service%2C%20saya%20mau%20konsultasi%20laptop%2FPC" target="_blank" rel="noopener">
+          💬 Chat WhatsApp Sekarang
+        </a>
+        <span class="follow">atau follow <a href="https://instagram.com/potatoservice" target="_blank" rel="noopener">@potatoservice</a></span>
+      </div>
+    </div>
+    <div class="hero-art reveal">
+      <div class="glow"></div>
+      <img src="assets/mascot-repair.png" alt="Maskot Potato Service memegang obeng dan kunci pas, siap membetulkan laptop dan komputer" width="389" height="400">
+    </div>
+  </div>
+</section>
+<div class="batik-strip"></div>
+
+<section class="layanan" id="layanan">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Layanan</span>
+      <h2>Dua Hal yang Kami Kuasai</h2>
+      <p>Nggak neko-neko. Fokus di dua ini aja biar hasilnya maksimal — bukan toko serba ada.</p>
+    </div>
+
+    <div class="layanan-grid">
+      <div class="panel panel-service reveal">
+        <div class="txt">
+          <span class="panel-kicker">01 · Perbaikan &amp; Upgrade</span>
+          <h3>Service Laptop &amp; Komputer</h3>
+          <ul class="check-list">
+            <li><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#ff7a2f"/><path d="M5 9.3l2.5 2.4L13 6" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Pergantian part</li>
+            <li><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#ff7a2f"/><path d="M5 9.3l2.5 2.4L13 6" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Upgrade SSD &amp; RAM</li>
+            <li><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#ff7a2f"/><path d="M5 9.3l2.5 2.4L13 6" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Perbaikan mati total</li>
+            <li><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#ff7a2f"/><path d="M5 9.3l2.5 2.4L13 6" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Instalasi software</li>
+            <li><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#ff7a2f"/><path d="M5 9.3l2.5 2.4L13 6" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Instalasi ulang Windows</li>
+            <li><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#ff7a2f"/><path d="M5 9.3l2.5 2.4L13 6" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Aktivasi Windows (Original)</li>
+            <li><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#ff7a2f"/><path d="M5 9.3l2.5 2.4L13 6" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Aktivasi Microsoft Office (Original)</li>
+          </ul>
+        </div>
+        <img class="mascot" src="assets/mascot-build.png" alt="Maskot Potato Service merakit dan meng-upgrade komputer" width="358" height="310" loading="lazy">
+        <div class="price-note">
+          <span>Harga tergantung jenis kerusakan &amp; kebutuhan.</span>
+          <a class="btn btn-orange btn-sm" href="https://wa.me/6289900694797?text=Halo%20Potato%20Service%2C%20saya%20mau%20tanya%20estimasi%20harga%20service" target="_blank" rel="noopener">Hubungi WA untuk estimasi harga →</a>
+        </div>
+      </div>
+
+      <div class="panel panel-konsul reveal">
+        <span class="panel-kicker" style="color:var(--orange-500)">02 · Ngobrol Santai</span>
+        <h3>Konsultasi Laptop &amp; Komputer</h3>
+        <p>Laptop lemot? Bingung mau upgrade apa? Atau cuma mau curhat soal PC kesayangan yang tiba-tiba ngambek? Chat aja, kita bahas bareng — santai kayak ngobrol sama temen.</p>
+        <img class="mascot" src="assets/mascot-consult.png" alt="Maskot Potato Service sedang kesal menatap laptop di meja kerja" width="203" height="170" loading="lazy">
+        <p class="note">Curhatan dan keluh kesah juga boleh — asal jangan politik ya 😄</p>
+        <a class="btn btn-navy" href="https://wa.me/6289900694797?text=Halo%20Potato%20Service%2C%20aku%20mau%20konsultasi%20soal%20laptop%2FPC" target="_blank" rel="noopener">Yuk, Curhat via WA →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alur" id="alur">
+  <div class="wrap">
+    <div class="sec-head on-dark reveal">
+      <span class="eyebrow">Alur Servis</span>
+      <h2>4 Langkah, Nggak Ribet</h2>
+      <p>Dari chat pertama sampai laptopmu nyala normal lagi — semua langkahnya jelas.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="num">01</span>
+        <h3>Hubungi via WA</h3>
+        <p>Ceritain keluhan laptop atau PC-mu, kita bantu diagnosa awal dari chat.</p>
+      </div>
+      <div class="step reveal">
+        <span class="num">02</span>
+        <h3>Diagnosa &amp; Konsultasi</h3>
+        <p>Teknisi kasih rekomendasi perbaikan, harga dibicarakan dulu sebelum lanjut.</p>
+      </div>
+      <div class="step reveal">
+        <span class="num">03</span>
+        <h3>Dikerjakan di Lokasi</h3>
+        <p>Teknisi datang langsung ke tempatmu dan mulai kerja di depan mata.</p>
+      </div>
+      <div class="step reveal">
+        <span class="num">04</span>
+        <h3>Selesai</h3>
+        <p>Laptop atau PC-mu siap dipakai lagi. Gampang, kan?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kenapa" id="kenapa">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Kenapa Potato Service?</span>
+      <h2>Alasannya Sederhana</h2>
+    </div>
+    <div class="claims reveal">
+      <div class="claim">
+        <span class="tag">Fast Respon</span>
+        <div>
+          <h3>24 Jam (kecuali lagi bobo)</h3>
+          <p>Chat kapan aja, siang atau malam — kita usahain balas secepat mungkin.</p>
+        </div>
+      </div>
+      <div class="claim">
+        <span class="tag">Call Service</span>
+        <div>
+          <h3>Kami yang Datang, Bukan Kamu yang Ribet</h3>
+          <p>Teknisi jemput bola langsung ke lokasimu, se-Yogyakarta. Nggak perlu bawa laptop ke toko.</p>
+        </div>
+      </div>
+      <div class="claim">
+        <span class="tag">Konsultasi Santai</span>
+        <div>
+          <h3>Ngobrol Biasa, Bukan Sok Teknis</h3>
+          <p>Kita jelasin masalah laptop/PC-mu pakai bahasa yang gampang dimengerti, nggak bikin pusing.</p>
+        </div>
+      </div>
+    </div>
+    <div class="kenapa-foot reveal">
+      <img src="assets/mascot-circuit.png" alt="Tim maskot Potato Service bekerja bersama membetulkan motherboard" width="308" height="240" loading="lazy">
+      <p>Tim kami kerja bareng biar laptop atau PC kesayanganmu cepat balik normal.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final" id="kontak">
+  <div class="wrap reveal">
+    <h2>Laptop Rewel? Jangan Didiemin.</h2>
+    <p>Chat sekarang, teknisi kami siap meluncur ke lokasimu di Yogyakarta.</p>
+    <a class="btn btn-navy" href="https://wa.me/6289900694797?text=Halo%20Potato%20Service%2C%20saya%20mau%20konsultasi%20laptop%2FPC" target="_blank" rel="noopener">💬 Chat WhatsApp Sekarang</a>
+    <div class="socials">
+      <a href="https://instagram.com/potatoservice" target="_blank" rel="noopener">Instagram @potatoservice</a>
+      <a href="https://www.tiktok.com/@potatoservice" target="_blank" rel="noopener">TikTok @potatoservice</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="assets/logo.jpg" alt="Logo Potato Service" width="52" height="52" loading="lazy">
+        <div>
+          <div class="name">Potato Service</div>
+          <div class="tag">Call service laptop &amp; komputer di Yogyakarta. Fast respon 24 jam (kecuali lagi bobo).</div>
+        </div>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4>Kontak</h4>
+          <ul>
+            <li><a href="https://wa.me/6289900694797" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="https://instagram.com/potatoservice" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@potatoservice" target="_blank" rel="noopener">TikTok</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Layanan</h4>
+          <ul>
+            <li><a href="#layanan">Service Laptop &amp; Komputer</a></li>
+            <li><a href="#layanan">Konsultasi</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Potato Service. Area layanan: Yogyakarta.</span>
+      <span>Dibuat dengan 🥔 di Jogja.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/6289900694797?text=Halo%20Potato%20Service%2C%20saya%20mau%20konsultasi%20laptop%2FPC" target="_blank" rel="noopener" aria-label="Chat WhatsApp Potato Service">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.08c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.14-.95-.31-1.64-.61-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.77-.36.19 0 .39 0 .55.01.18.01.42-.07.65.5.24.58.82 2 .89 2.15.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.13.63-.05.17-.18.72-.84.92-1.13.19-.29.39-.24.65-.14.27.1 1.68.79 1.97.94.29.14.48.21.55.33.07.12.07.7-.17 1.38z"/></svg>
+</a>
+
+<script>
+(function(){
+  var btn = document.getElementById('burgerBtn');
+  var panel = document.getElementById('mobilePanel');
+  btn.addEventListener('click', function(){
+    var open = panel.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  panel.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      panel.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+    });
+  });
+
+  if('IntersectionObserver' in window){
+    var els = document.querySelectorAll('.reveal');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+
+</body>
+</html>
